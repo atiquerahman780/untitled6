@@ -35,33 +35,32 @@ class _SlideState extends State<Slide> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Center(
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(8, 0, 8, 0),
+      child: Container(
+        color: Colors.black12,
+        child: Center(
           child: CarouselSlider(
             options: CarouselOptions(
               enlargeCenterPage: true,
               enableInfiniteScroll: false,
+              height: 100,
               autoPlay: true,
             ),
             items: dataList
-                .map((e) => ClipRRect(
-                      borderRadius: BorderRadius.circular(8),
-                      child: Stack(
-                        fit: StackFit.expand,
-                        children: <Widget>[
-                          Image.network(
-                            e.picUrl,
+                .map((e) => Container(
+                   color: Colors.red,
+                   width: MediaQuery.of(context).size.width,
+                child: Image.network(
+                  e.picUrl,
 
-                            fit: BoxFit.cover,height: 100,width: 100,
-                          )
-                        ],
-                      ),
-                    ))
+                     fit: BoxFit.cover,width: MediaQuery.of(context).size.width,
+                  ),
+                       ))
                 .toList(),
           ),
-        )
-      ],
+        ),
+      ),
     );
   }
 }

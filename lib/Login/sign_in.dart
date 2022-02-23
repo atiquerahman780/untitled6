@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:untitled6/Account/account.dart';
 import 'package:untitled6/Login/forgot_password.dart';
 import 'package:untitled6/HomeScreen/home_screen.dart';
 import 'package:untitled6/Admin/see_product.dart';
@@ -11,17 +12,12 @@ class SignIn extends StatefulWidget {
   _SignInState createState() => _SignInState();
 }
 class _SignInState extends State<SignIn> {
+
   bool _isObscure = true;
   final _formKey = GlobalKey<FormState>();
   final emailTextEditController = new TextEditingController();
   final passwordTextEditController = new TextEditingController();
   final confirmPasswordTextEditController = new TextEditingController();
-
-  final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
-
-
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -155,12 +151,12 @@ class _SignInState extends State<SignIn> {
                         }
 
                       }
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => const HomeScreen()),
-                        //Navigator.pushReplacement(context, Products());
-
-                      );
+                      // Navigator.push(
+                      //   context,
+                      //   MaterialPageRoute(builder: (context) => const HomeScreen()),
+                      //   //Navigator.pushReplacement(context, Products());
+                      //
+                      // );
                       Navigator.of(context)
                           .pushReplacement(MaterialPageRoute(builder: (context) => HomeScreen()));
                     }

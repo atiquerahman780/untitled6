@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:untitled6/Admin/admin.dart';
 import 'package:untitled6/Login/sign_in.dart';
+import 'package:untitled6/SellerRegistration/sellerAccount.dart';
 
 
 class NavigationDrawerWidget extends StatefulWidget {
@@ -60,24 +61,24 @@ class _NavigationDrawerWidgetState extends State<NavigationDrawerWidget> {
               icon: Icons.category,
               onClicked: ()=> selectedItem(context,0),
             ),*/
-            const SizedBox(height: 0),
-            buildMenuItem(
-              text: 'My Cart',
-              icon: Icons.shopping_cart_outlined,
-              onClicked: ()=> selectedItem(context,1),
-            ),
-            const SizedBox(height: 0),
-            buildMenuItem(
-              text: 'My Profile',
-              icon: Icons.person,
-              onClicked: ()=> selectedItem(context,2),
-            ),
-            const SizedBox(height: 0),
-            buildMenuItem(
-              text: 'My Orders',
-              icon: Icons.book_online_outlined,
-              onClicked: ()=> selectedItem(context,3),
-            ),
+            // const SizedBox(height: 0),
+            // buildMenuItem(
+            //   text: 'My Cart',
+            //   icon: Icons.shopping_cart_outlined,
+            //   onClicked: ()=> selectedItem(context,1),
+            // ),
+            // const SizedBox(height: 0),
+            // buildMenuItem(
+            //   text: 'My Profile',
+            //   icon: Icons.person,
+            //   onClicked: ()=> selectedItem(context,2),
+            // ),
+            // const SizedBox(height: 0),
+            // buildMenuItem(
+            //   text: 'My Orders',
+            //   icon: Icons.book_online_outlined,
+            //   onClicked: ()=> selectedItem(context,3),
+            // ),
             /*const SizedBox(height: 0),
             buildMenuItem(
               text: 'Grocer Club',
@@ -102,24 +103,24 @@ class _NavigationDrawerWidgetState extends State<NavigationDrawerWidget> {
               icon: Icons.share,
               onClicked: ()=> selectedItem(context,7),
             ),*/
+            // const SizedBox(height: 0),
+            // buildMenuItem(
+            //   text: 'FAQs',
+            //   icon: Icons.question_answer,
+            //   onClicked: ()=> selectedItem(context,8),
+            // ),
             const SizedBox(height: 0),
             buildMenuItem(
-              text: 'FAQs',
-              icon: Icons.question_answer,
-              onClicked: ()=> selectedItem(context,8),
-            ),
-            /*const SizedBox(height: 0),
-            buildMenuItem(
-              text: 'Live Chat',
-              icon: Icons.chat,
+              text: 'Seller Account Registration',
+              icon: Icons.person_add_alt_1,
               onClicked: ()=> selectedItem(context,9),
-            ),*/
-            const SizedBox(height: 0),
-            buildMenuItem(
-              text: 'logout',
-              icon: Icons.logout,
-              onClicked: ()=> selectedItem(context,10),
             ),
+            // const SizedBox(height: 0),
+            // buildMenuItem(
+            //   text: 'logout',
+            //   icon: Icons.logout,
+            //   onClicked: ()=> selectedItem(context,10),
+            // ),
             const SizedBox(height: 0),
             buildMenuItem(
               text: 'Admin',
@@ -132,12 +133,12 @@ class _NavigationDrawerWidgetState extends State<NavigationDrawerWidget> {
               icon: Icons.email,
               onClicked: ()=> selectedItem(context,12),
             ),*/
-            const SizedBox(height: 0),
-            buildMenuItem(
-              text: 'Sign In',
-              icon: Icons.power_settings_new,
-              onClicked: ()=> selectedItem(context,13),
-            ),
+            // const SizedBox(height: 0),
+            // buildMenuItem(
+            //   text: 'Sign In',
+            //   icon: Icons.power_settings_new,
+            //   onClicked: ()=> selectedItem(context,13),
+            // ),
 
           ],
         ),
@@ -201,12 +202,12 @@ class _NavigationDrawerWidgetState extends State<NavigationDrawerWidget> {
     }
     switch (i){
       case 9:
-       // Navigator.of(context).push(MaterialPageRoute(builder: (context) => Home(),));
+        Navigator.of(context).push(MaterialPageRoute(builder: (context) => SellerAccount(),));
     }
     switch (i){
       case 10:
-        FirebaseAuth.instance.signOut();
-        Navigator.of(context).push(MaterialPageRoute(builder: (context) => SignIn(),));
+        // FirebaseAuth.instance.signOut();
+        // Navigator.of(context).push(MaterialPageRoute(builder: (context) => SignIn(),));
     }
     switch (i){
       case 11:

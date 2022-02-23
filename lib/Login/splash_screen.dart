@@ -62,12 +62,14 @@ class SplashScreen extends StatelessWidget {
                  minimumSize: const Size(200, 50), //////// HERE
                ),
                onPressed: () {
+                 Navigator.of(context).push(MaterialPageRoute(builder: (context) => HomeScreen(),));
 
-                 Navigator.pushAndRemoveUntil(
-                   context,
-                   MaterialPageRoute(builder: (context) => FirebaseAuth.instance.currentUser==null? SignIn():HomeScreen(),),
-                       (Route<dynamic> route) => false,
-                 );
+                 // Navigator.pushAndRemoveUntil(
+                 //   context,
+                 //   MaterialPageRoute(builder: (context) =>
+                 //   FirebaseAuth.instance.currentUser==null? SignIn():HomeScreen(),),
+                 //       (Route<dynamic> route) => false,
+                 // );
                },
                child: const Text('Continue',style: TextStyle(fontSize: 17)),
              ),

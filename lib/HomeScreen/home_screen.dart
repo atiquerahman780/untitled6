@@ -1,11 +1,16 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:untitled6/Account/account.dart';
 import 'package:untitled6/HomeScreen/Slider.dart';
-import 'package:untitled6/HomeScreen/drawer.dart';
-import 'package:untitled6/Shop/Tabs/tab.dart';
-
-import '../Products/book.dart';
+import 'package:untitled6/HomeScreen/categories.dart';
+import 'package:untitled6/Laptop.dart';
+import 'package:untitled6/Login/sign_in.dart';
+import 'package:untitled6/Login/sign_in_Message.dart';
+import 'package:untitled6/Message/message.dart';
+import '../allProduct.dart';
 import '../cart.dart';
-import '../Products/tasbeeh.dart';
+import '../kityhor.dart';
+import 'search.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -15,6 +20,17 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  final FirebaseAuth auth = FirebaseAuth.instance;
+
+  void inputData() {
+    final User? user = auth.currentUser;
+    final uid = user?.uid;
+    print(uid);
+    String? l =uid;
+    q.r=l!;
+    print("llllllllllllllllllllllllllllllllll");
+    // here you write the codes to input the data into firestore
+  }
   int _selectedIndex = 0;
   void _onItemTapped(int index) {
     setState(() {
@@ -24,139 +40,106 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+inputData();
     return Scaffold(
-        appBar: AppBar(
-          title: const Text("Alamaat"),
-          backgroundColor: Colors.orange,
-          actions: [
-            IconButton(
-                onPressed: () {
-                  // Navigator.push(
-                  //   context
-                  //   , MaterialPageRoute(builder: (_)=> LocalMyCart()),
-                  // );
-                },
-                icon: const Icon(Icons.notifications)),
-            IconButton(
-              icon: const Icon(Icons.shopping_cart),
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) =>  Cart()),
-                );
-              },
-            ),
-          ],
-        ),
-        drawer: const NavigationDrawerWidget(),
         body: SafeArea(
-          child: SingleChildScrollView(
-            child: Column(
+          child: Scaffold(
+            body: Column(
               children: [
                 if (_selectedIndex == 0) ...[
-                  Row(
-                    children: const [
-                      Padding(
-                        padding: EdgeInsets.all(10.0),
-                        child: Text("Breaking News"),
+
+                    SizedBox(
+
+                        height: MediaQuery.of(context).size.height * 0.06,
+                        width: MediaQuery.of(context).size.width,
+                        child: const search(),
+
+
+                  ),
+
+                  Expanded(
+                    child: SingleChildScrollView(
+                      child: Column(
+                        children: [
+                          SizedBox(
+                            height: MediaQuery.of(context).size.height * 0.14,
+                            width: MediaQuery.of(context).size.width,
+                            child: Slide(),
+                          ),
+                          Row(
+                            children: const [
+                              Padding(
+                                padding: EdgeInsets.all(10.0),
+                                child: Text("Categories"),
+                              ),
+                            ],
+                          ),
+                          SizedBox(
+                            height: MediaQuery.of(context).size.height * 0.25,
+                            width: MediaQuery.of(context).size.width,
+                            child: const categories(),
+                          ),
+                          Row(
+                            children:   const [
+                              Padding(
+                                padding: EdgeInsets.all(10.0),
+                                child: Text("All"),
+                              ),
+                            ],
+                          ),
+                          SizedBox(
+                            height: MediaQuery.of(context).size.height*1.20 ,
+                            width: MediaQuery.of(context).size.width,
+                            child: const AllProduct(),
+                          ),
+                        ],
                       ),
-                    ],
+                    )
+
                   ),
-                  SizedBox(
-                    height: MediaQuery.of(context).size.height * 0.27,
-                    width: MediaQuery.of(context).size.width,
-                    child: Slide(),
-                  ),
-                  Row(
-                    children: const [
-                      Padding(
-                        padding: EdgeInsets.all(10.0),
-                        child: Text("Lectures Videos"),
-                      ),
-                    ],
-                  ),
-                  SizedBox(
-                    height: MediaQuery.of(context).size.height * 0.24,
-                    width: MediaQuery.of(context).size.width,
-                    //child: ,
-                  ),
-                  SizedBox(
-                    height: MediaQuery.of(context).size.height * 0.24,
-                    width: MediaQuery.of(context).size.width,
-                    //child: ,
-                  ),
-                  Row(
-                    children: const [
-                      Padding(
-                        padding: EdgeInsets.all(10.0),
-                        child: Text("Tasbeeh"),
-                      ),
-                    ],
-                  ),
-                  SizedBox(
-                    height: MediaQuery.of(context).size.height * 0.24,
-                    width: MediaQuery.of(context).size.width,
-                    child: const Tasbeeh(),
-                  ),
-                  Row(
-                    children: const [
-                      Padding(
-                        padding: EdgeInsets.all(10.0),
-                        child: Text("Books"),
-                      ),
-                    ],
-                  ),
-                  SizedBox(
-                    height: MediaQuery.of(context).size.height * 0.24,
-                    width: MediaQuery.of(context).size.width,
-                    child: const Book(),
-                  ),
-                  Row(
-                    children: const [
-                      Padding(
-                        padding: EdgeInsets.all(10.0),
-                        child: Text("Announcement"),
-                      ),
-                    ],
-                  ),
-                  SizedBox(
-                    height: MediaQuery.of(context).size.height * 0.24,
-                    width: MediaQuery.of(context).size.width,
-                    //child: Laptops(),
-                  ),
+
                 ]
                 else if (_selectedIndex == 1) ...[
-                  SizedBox(
-                    height: MediaQuery.of(context).size.height *0.81,
-                    width: MediaQuery.of(context).size.width,
-                    child: TabScreen(),
-                  ),
+                  Expanded(child: SingleChildScrollView(
+                    child:SizedBox(
+                      height: MediaQuery.of(context).size.height *0.81,
+                      width: MediaQuery.of(context).size.width,
+                      child: abcd(),
+                      //FirebaseAuth.instance.currentUser==null? SignInM():message(),
+                    ),
+                  )
+                  )
+
                 ]
                 else if (_selectedIndex == 3) ...[
-                  SizedBox(
-                    height: MediaQuery.of(context).size.height *0.81,
-                    width: MediaQuery.of(context).size.width,
-                   // child: Admin(),
-                  ),
-                ]
-                else if (_selectedIndex == 2) ...[
-                  Row(
-                    children: const [
-                      Padding(
-                        padding: EdgeInsets.all(10.0),
-                        child: Text("Books"),
+                    Expanded(
+                      child: SingleChildScrollView(
+                          child:  SizedBox(
+                            height: MediaQuery.of(context).size.height ,
+                            width: MediaQuery.of(context).size.width,
+                            child:Laptops(),
+                            //FirebaseAuth.instance.currentUser==null? SignIn():account(),
+                          ),
+                        )
+
+                    ),
+                  ]
+                  else if (_selectedIndex == 2) ...[
+                      Expanded(
+                        child: SingleChildScrollView(
+                        child: SizedBox(
+                          height: MediaQuery.of(context).size.height *0.81,
+                          width: MediaQuery.of(context).size.width,
+                          child: Cart(),
+                        ),
+                           )
+
                       ),
-                    ],
-                  ),
-                  SizedBox(
-                    height: MediaQuery.of(context).size.height * 0.24,
-                    width: MediaQuery.of(context).size.width,
-                    //child: (),
-                  ),
-                ]
+                    ]
               ],
             ),
-          ),
+          )
+
         ),
         bottomNavigationBar: BottomNavigationBar(
             type: BottomNavigationBarType.fixed,
@@ -167,16 +150,16 @@ class _HomeScreenState extends State<HomeScreen> {
               label: 'Home',
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.shop),
-              label: 'Shop',
+              icon: Icon(Icons.message),
+              label: 'Messages',
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.book),
-              label: 'E-Books',
+              icon: Icon(Icons.shopping_cart),
+              label: 'Cart',
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.meeting_room_outlined),
-              label: 'Meeting',
+              icon: Icon(Icons.person),
+              label: 'Account',
             ),
           ],
           currentIndex: _selectedIndex,
@@ -184,4 +167,7 @@ class _HomeScreenState extends State<HomeScreen> {
           onTap: _onItemTapped,
         ));
   }
+}
+class q{
+  static String r='';
 }

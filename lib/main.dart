@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
       ),
 
       debugShowCheckedModeBanner: false,
-      home: SplashScreen(),
+      home: FirebaseAuth.instance.currentUser==null? SignIn():HomeScreen(),
     );
   }
 }

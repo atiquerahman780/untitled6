@@ -100,7 +100,8 @@ class _ProductsState extends State<Pro> {
           Map products=snapshot.value as Map;
           products['key'] = snapshot.key;
           return _buildPrductItem(products: products);
-        },),
+        },
+        ),
       ),
     );
   }

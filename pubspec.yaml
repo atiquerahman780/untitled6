@@ -51,8 +51,6 @@ dependencies:
   flutter_svg: ^0.22.0
   firebase_auth: ^3.1.4
   carousel_slider: ^4.0.0
-  flutter_document_picker: ^4.0.0
-  advance_pdf_viewer: ^2.0.1
 
 dev_dependencies:
   flutter_test:
